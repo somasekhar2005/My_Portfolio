@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vanamala Soma Sekhar | Portfolio</title>
+
+    <style>
+
+        /* =====================================================
+           GENERAL SETTINGS
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(139, 92, 246, 0.18),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(124, 58, 237, 0.15),
+                    transparent 25%
+                ),
+                #050507;
+
+            color: #f5f3ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           ANIMATED BACKGROUND
+        ===================================================== */
+
+        body::before,
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            opacity: 0.18;
+
+            pointer-events: none;
+
+            z-index: -2;
+        }
+
+        body::before {
+            background: #8b5cf6;
+
+            top: -120px;
+            left: -120px;
+
+            animation:
+                purpleMove 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background: #6d28d9;
+
+            right: -120px;
+            bottom: -120px;
+
+            animation:
+                purpleMove2 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes purpleMove {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(180px, 120px);
+            }
+
+            100% {
+                transform: translate(50px, 300px);
+            }
+        }
+
+        @keyframes purpleMove2 {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-150px, -100px);
+            }
+
+            100% {
+                transform: translate(-50px, -250px);
+            }
+        }
+
+
+        /* =====================================================
+           FLOATING BUBBLES
+        ===================================================== */
+
+        .bubble {
+            position: fixed;
+
+            bottom: -100px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(255, 255, 255, 0.35),
+                    rgba(139, 92, 246, 0.25),
+                    rgba(124, 58, 237, 0.05)
+                );
+
+            border: 1px solid rgba(167, 139, 250, 0.25);
+
+            box-shadow:
+                0 0 25px rgba(139, 92, 246, 0.15);
+
+            animation: bubbleUp linear infinite;
+        }
+
+        @keyframes bubbleUp {
+
+            0% {
+                transform:
+                    translateY(0)
+                    translateX(0)
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            50% {
+                transform:
+                    translateY(-50vh)
+                    translateX(80px)
+                    scale(1);
+            }
+
+            100% {
+                transform:
+                    translateY(-115vh)
+                    translateX(-80px)
+                    scale(1.3);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           CLICK BUBBLE
+        ===================================================== */
+
+        .click-bubble {
+            position: fixed;
+
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            background: rgba(139, 92, 246, 0.8);
+
+            box-shadow:
+                0 0 15px #8b5cf6,
+                0 0 30px #7c3aed;
+
+            transform: translate(-50%, -50%);
+
+            animation:
+                clickBubble 0.8s ease-out forwards;
+
+            z-index: 9999;
+        }
+
+        @keyframes clickBubble {
+
+            0% {
+                width: 15px;
+                height: 15px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        header {
+            width: 100%;
+
+            background:
+                rgba(5, 5, 7, 0.75);
+
+            backdrop-filter: blur(15px);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            border-bottom:
+                1px solid
+                rgba(139, 92, 246, 0.15);
+        }
+
+        .navbar {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+
+            font-weight: 700;
+
+            color: #ffffff;
+        }
+
+        .logo::first-letter {
+            color: #a78bfa;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+
+            color: #d8d4e8;
+
+            font-size: 15px;
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b5cf6,
+                    #c084fc
+                );
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c4b5fd;
+
+            text-shadow:
+                0 0 12px
+                rgba(139, 92, 246, 0.8);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            max-width: 1150px;
+
+            min-height: 90vh;
+
+            margin: auto;
+
+            padding: 80px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 60px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .small-text,
+        .section-title {
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+            color: #a78bfa;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(50px, 8vw, 90px);
+
+            line-height: 1;
+
+            margin-bottom: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c4b5fd,
+                    #8b5cf6
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+
+            font-weight: 400;
+
+            margin-bottom: 20px;
+
+            color: #ddd6fe;
+        }
+
+        .hero p {
+            max-width: 550px;
+
+            color: #a8a3b5;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .buttons {
+            margin-top: 30px;
+
+            display: flex;
+
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #8b5cf6
+                );
+
+            color: white;
+
+            border:
+                1px solid
+                rgba(167, 139, 250, 0.5);
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform:
+                translateY(-5px)
+                scale(1.03);
+
+            box-shadow:
+                0 0 15px
+                rgba(139, 92, 246, 0.5),
+
+                0 0 40px
+                rgba(139, 92, 246, 0.25);
+        }
+
+        .btn.secondary {
+            background: transparent;
+
+            color: #c4b5fd;
+
+            border:
+                1px solid
+                #8b5cf6;
+        }
+
+        .btn.secondary:hover {
+            background:
+                rgba(139, 92, 246, 0.15);
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .profile-circle {
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            border: 3px solid #8b5cf6;
+
+            background: #0a0810;
+
+            box-shadow:
+                0 0 30px rgba(139, 92, 246, 0.35),
+                0 0 60px rgba(139, 92, 246, 0.15);
+
+            animation:
+                profileFloat 4s ease-in-out infinite;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+        }
+
+        .profile span {
+            color: #c4b5fd;
+
+            font-size: 18px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+        }
+
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        .section {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 100px 20px;
+        }
+
+        .section h2 {
+            font-size: 42px;
+
+            margin-bottom: 40px;
+
+            color: #f5f3ff;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about-content {
+            max-width: 750px;
+        }
+
+        .about-content p {
+            color: #aaa5b7;
+
+            font-size: 18px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .skill-card {
+            padding: 30px;
+
+            border:
+                1px solid
+                rgba(139, 92, 246, 0.18);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20, 16, 30, 0.9),
+                    rgba(10, 10, 14, 0.9)
+                );
+
+            border-radius: 12px;
+
+            transition:
+                transform 0.3s,
+                border 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform:
+                translateY(-8px)
+                scale(1.02);
+
+            border-color:
+                rgba(139, 92, 246, 0.7);
+
+            box-shadow:
+                0 0 20px
+                rgba(139, 92, 246, 0.2),
+
+                inset 0 0 20px
+                rgba(139, 92, 246, 0.05);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 5px;
+
+            color: #eeeaff;
+        }
+
+        .skill-card p {
+            color: #8f899e;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .project-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20, 16, 30, 0.95),
+                    rgba(8, 8, 11, 0.95)
+                );
+
+            border:
+                1px solid
+                rgba(139, 92, 246, 0.2);
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            transition:
+                transform 0.3s,
+                border 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform:
+                translateY(-10px);
+
+            border-color:
+                #8b5cf6;
+
+            box-shadow:
+                0 10px 40px
+                rgba(139, 92, 246, 0.2);
+        }
+
+        .project-number {
+            font-size: 14px;
+
+            color: #8b5cf6;
+
+            margin-bottom: 25px;
+        }
+
+        .project-card h3 {
+            font-size: 24px;
+
+            margin-bottom: 15px;
+
+            color: #f5f3ff;
+        }
+
+        .project-card p {
+            color: #9f9aaa;
+
+            margin-bottom: 20px;
+        }
+
+        .technologies {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 25px;
+        }
+
+        .technologies span {
+            padding: 5px 10px;
+
+            border:
+                1px solid
+                rgba(139, 92, 246, 0.35);
+
+            background:
+                rgba(139, 92, 246, 0.08);
+
+            color: #c4b5fd;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+        }
+
+        .project-link {
+            color: #a78bfa;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            color: #ddd6fe;
+
+            text-shadow:
+                0 0 12px
+                #8b5cf6;
+        }
+
+
+        /* =====================================================
+           EDUCATION
+        ===================================================== */
+
+        .education-card {
+            border-top:
+                1px solid
+                rgba(139, 92, 246, 0.2);
+
+            padding: 25px 0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .education-card p {
+            color: #9f9aaa;
+        }
+
+        .education-card span {
+            color: #a78bfa;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact {
+            text-align: left;
+        }
+
+        .contact > p {
+            color: #9f9aaa;
+
+            max-width: 700px;
+
+            font-size: 18px;
+        }
+
+        .contact h2 {
+            font-size: 42px;
+
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin: 35px 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            max-width: 700px;
+        }
+
+        .contact-info a {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            color: #c4b5fd;
+
+            text-decoration: none;
+
+            transition: 0.3s ease;
+
+            padding: 5px 0;
+        }
+
+        .contact-info a:hover {
+            transform: translateX(8px);
+
+            color: #ffffff;
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 14px;
+
+            background:
+                rgba(139, 92, 246, 0.10);
+
+            border:
+                1px solid
+                rgba(139, 92, 246, 0.25);
+
+            font-size: 22px;
+
+            transition: 0.3s;
+        }
+
+        .contact-info a:hover .contact-icon {
+            background:
+                rgba(139, 92, 246, 0.25);
+
+            box-shadow:
+                0 0 20px
+                rgba(139, 92, 246, 0.3);
+
+            transform: scale(1.08);
+        }
+
+        .contact-info span {
+            color: #9f9aaa;
+
+            font-size: 14px;
+        }
+
+        .contact-info strong {
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           CONTACT FORM
+        ===================================================== */
+
+        #contactForm {
+            max-width: 700px;
+
+            margin: 40px 0 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+
+            padding: 17px;
+
+            border:
+                1px solid
+                rgba(139, 92, 246, 0.2);
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            background:
+                rgba(12, 10, 17, 0.9);
+
+            color: white;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        #contactForm input:focus,
+        #contactForm textarea:focus {
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 0 15px
+                rgba(139, 92, 246, 0.2);
+        }
+
+        #contactForm input::placeholder,
+        #contactForm textarea::placeholder {
+            color: #716b7d;
+        }
+
+        #contactForm textarea {
+            resize: vertical;
+        }
+
+        #contactForm .btn {
+            align-self: flex-start;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 30px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(139, 92, 246, 0.15);
+
+            color: #777180;
+
+            background: #030305;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+
+                text-align: center;
+
+                justify-content: center;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .skills-container {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                text-align: left;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .profile-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section {
+                padding: 70px 20px;
+            }
+
+            .section h2 {
+                font-size: 32px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                flex-direction: column;
+            }
+
+            .contact h2 {
+                font-size: 32px;
+            }
+
+            .contact-info strong {
+                font-size: 14px;
+                word-break: break-word;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <h2 class="logo">
+                Portfolio
+            </h2>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#education">Education</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         HOME
+    ===================================================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-text">
+                HELLO, I'M
+            </p>
+
+            <h1>
+                Vanamala Soma Sekhar
+            </h1>
+
+            <h2>
+                Full Stack Developer
+            </h2>
+
+            <p>
+                I am a passionate developer interested in creating
+                modern, responsive and user-friendly web applications.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile">
+
+            <div class="profile-circle">
+
+                <img
+                    src="somu.jpg.png"
+                    alt="Vanamala Soma Sekhar"
+                >
+
+            </div>
+
+            <span>
+                Somu
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ===================================================== -->
+
+    <section id="about" class="section">
+
+        <p class="section-title">
+            ABOUT ME
+        </p>
+
+        <h2>
+            Who I Am
+        </h2>
+
+        <div class="about-content">
+
+            <p>
+                I am a student and aspiring software developer with an
+                interest in web development, Java programming and
+                database technologies.
+            </p>
+
+            <p>
+                I enjoy learning new technologies and building practical
+                projects that solve real-world problems. My goal is to
+                become a professional software developer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SKILLS
+    ===================================================== -->
+
+    <section id="skills" class="section">
+
+        <p class="section-title">
+            MY SKILLS
+        </p>
+
+        <h2>
+            Technologies I Work With
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Web Structure</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Web Design</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Web Interactivity</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Java</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JDBC</h3>
+                <p>Database Connectivity</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>MySQL</h3>
+                <p>Database Management</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Git</h3>
+                <p>Version Control</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>GitHub</h3>
+                <p>Project Hosting</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECTS
+    ===================================================== -->
+
+    <section id="projects" class="section">
+
+        <p class="section-title">
+            MY WORK
+        </p>
+
+        <h2>
+            Projects
+        </h2>
+
+        <div class="projects-container">
+
+
+            <!-- Project 1 -->
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    01
+                </div>
+
+                <h3>
+                    Food Express
+                </h3>
+
+                <p>
+                    An online food ordering application that allows
+                    users to browse restaurants, add food items to a
+                    cart and place orders.
+                </p>
+
+                <div class="technologies">
+
+                    <span>JSP</span>
+                    <span>Java</span>
+                    <span>MySQL</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <!-- Project 2 -->
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    02
+                </div>
+
+                <h3>
+                    Talent Identification App
+                </h3>
+
+                <p>
+                    A sports technology application designed to identify
+                    and track talented athletes using performance data
+                    and video analysis.
+                </p>
+
+                <div class="technologies">
+
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>PostgreSQL</span>
+                    <span>AI</span>
+
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <!-- Project 3 -->
+
+            <div class="project-card">
+
+                <div class="project-number">
+                    03
+                </div>
+
+                <h3>
+                    Student Management System
+                </h3>
+
+                <p>
+                    A Java and MySQL based application for storing,
+                    updating, deleting and displaying student information.
+                </p>
+
+                <div class="technologies">
+
+                    <span>Java</span>
+                    <span>JDBC</span>
+                    <span>MySQL</span>
+
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EDUCATION
+    ===================================================== -->
+
+    <section id="education" class="section">
+
+        <p class="section-title">
+            EDUCATION
+        </p>
+
+        <h2>
+            My Education
+        </h2>
+
+
+        <div class="education-card">
+
+            <div>
+
+                <h3>
+                    Bachelor's Degree
+                </h3>
+
+                <p>
+                    Bachelor of Technology / Information Technology
+                </p>
+
+                <p>
+                    Sasi Institute of Technology
+                </p>
+
+            </div>
+
+            <span>
+                2024 - 2028
+            </span>
+
+        </div>
+
+
+        <div class="education-card">
+
+            <div>
+
+                <h3>
+                    Intermediate
+                </h3>
+
+                <p>
+                    Sri Chaitanya
+                </p>
+
+            </div>
+
+            <span>
+                2022 - 2024
+            </span>
+
+        </div>
+
+
+        <div class="education-card">
+
+            <div>
+
+                <h3>
+                    SSC-School
+                </h3>
+
+                <p>
+                    Sasi English Medium School
+                </p>
+
+            </div>
+
+            <span>
+                2021 - 2022
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ===================================================== -->
+
+    <section id="contact" class="section contact">
+
+        <p class="section-title">
+            GET IN TOUCH
+        </p>
+
+        <h2>
+            Have a project or opportunity?
+        </h2>
+
+        <p>
+            Feel free to contact me if you would like to discuss a
+            project, internship, collaboration or simply connect.
+        </p>
+
+
+        <div class="contact-info">
+
+
+            <!-- EMAIL -->
+
+            <a href="mailto:somasekhar.vanamala24@sasi.ac.in">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+                <span>
+                    Email<br>
+
+                    <strong>
+                        somasekhar.vanamala24@sasi.ac.in
+                    </strong>
+                </span>
+
+            </a>
+
+
+            <!-- PHONE -->
+
+            <a href="tel:7702922859">
+
+                <div class="contact-icon">
+                    ☎
+                </div>
+
+                <span>
+                    Phone<br>
+
+                    <strong>
+                        7702922859
+                    </strong>
+                </span>
+
+            </a>
+
+
+            <!-- LOCATION -->
+
+            <a href="#">
+
+                <div class="contact-icon">
+                    📍
+                </div>
+
+                <span>
+                    Location<br>
+
+                    <strong>
+                        Chintalapudi, Eluru District
+                    </strong>
+                </span>
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <a
+                href="https://github.com/somasekhar2005"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="contact-icon">
+                    ◉
+                </div>
+
+                <span>
+                    GitHub<br>
+
+                    <strong>
+                        github.com/somasekhar2005
+                    </strong>
+                </span>
+
+            </a>
+
+
+            <!-- LINKEDIN -->
+
+            <a
+                href="https://www.linkedin.com/in/soma-sekhar-vanamala-045429337"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="contact-icon">
+                    in
+                </div>
+
+                <span>
+                    LinkedIn<br>
+
+                    <strong>
+                        Soma Sekhar Vanamala
+                    </strong>
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <input
+                type="text"
+                id="subject"
+                placeholder="Subject"
+                required
+            >
+
+            <textarea
+                id="message"
+                placeholder="Your Message"
+                rows="6"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Send Message ➤
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Vanamala Soma Sekhar. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* ==========================================
+           FLOATING BACKGROUND BUBBLES
+        ========================================== */
+
+        function createBubble() {
+
+            const bubble =
+                document.createElement("div");
+
+            bubble.classList.add("bubble");
+
+
+            const size =
+                Math.random() * 45 + 10;
+
+
+            bubble.style.width =
+                size + "px";
+
+            bubble.style.height =
+                size + "px";
+
+
+            bubble.style.left =
+                Math.random() * 100 + "vw";
+
+
+            bubble.style.animationDuration =
+                Math.random() * 10 + 8 + "s";
+
+
+            bubble.style.animationDelay =
+                Math.random() * 5 + "s";
+
+
+            document.body.appendChild(
+                bubble
+            );
+
+
+            setTimeout(function () {
+
+                bubble.remove();
+
+            }, 20000);
+
+        }
+
+
+        /* Create bubbles continuously */
+
+        setInterval(
+            createBubble,
+            700
+        );
+
+
+        /* Create initial bubbles */
+
+        for (
+            let i = 0;
+            i < 15;
+            i++
+        ) {
+
+            createBubble();
+
+        }
+
+
+
+        /* ==========================================
+           CLICK BUBBLE EFFECT
+        ========================================== */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+                const bubble =
+                    document.createElement("div");
+
+
+                bubble.classList.add(
+                    "click-bubble"
+                );
+
+
+                bubble.style.left =
+                    event.clientX + "px";
+
+
+                bubble.style.top =
+                    event.clientY + "px";
+
+
+                document.body.appendChild(
+                    bubble
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        bubble.remove();
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+
+
+        /* ==========================================
+           CONTACT FORM
+        ========================================== */
+
+        document
+            .getElementById("contactForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "name"
+                        ).value;
+
+
+                    alert(
+                        "Thank you, " +
+                        name +
+                        "! Your message has been received."
+                    );
+
+
+                    this.reset();
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
